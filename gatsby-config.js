@@ -1,19 +1,26 @@
 /**
  * @type {import('gatsby').GatsbyConfig}
  */
+
+const dotenv = require("dotenv")
+
+if (process.env.NODE_ENV !== "production") {
+  dotenv.config()
+}
+
 module.exports = {
   siteMetadata: {
     title: `kiselyak`,
     siteUrl: `https://www.yourdomain.tld`,
   },
   plugins: [
-    //   {
-    //   resolve: 'gatsby-source-contentful',
-    //   options: {
-    //     "accessToken": "iQjIZcFBvHdravfMu-iigysdKa5X4EfQCsbLY4Cno7M",
-    //     "spaceId": "md0rn1gshn2t"
-    //   }
-    // },
+      {
+      resolve: 'gatsby-source-contentful',
+      options: {
+        "accessToken": process.env.CONTENTFUL_ACCESS_TOKEN,
+        "spaceId": process.env.CONTENTFUL_SPACE_ID
+      }
+    },
     "gatsby-plugin-image",
     "gatsby-plugin-sharp",
     "gatsby-transformer-sharp",
@@ -34,5 +41,11 @@ module.exports = {
       },
       __key: "pages",
     },
+    {
+      resolve: "gatsby-plugin-snipcart-advanced",
+      options: {
+        publicApiKey: "MmFlZGEzY2QtNmM2Yy00NTM1LWJkY2ItMzNmOGM4OTkwMTliNjM4MTU1NDEzMTkyMjY1NTUy"
+      }
+    }
   ],
 };

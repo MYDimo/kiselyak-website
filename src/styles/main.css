@@ -1,0 +1,14 @@
+.productGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-template-rows: repeat(2, 1fr);
+  grid-column-gap: 20px;
+  grid-row-gap: 0px;
+}
+
+.productWrapper {
+  background-color: #ccc;
+  padding: 20px;
+  border-radius: 10px;
+  justify-self: center;
+}
